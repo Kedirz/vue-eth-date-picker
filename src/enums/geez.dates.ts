@@ -1,5 +1,5 @@
-export const days: string[] = ['Seno', 'Maks', 'Erob', 'Hamus', 'Arb', 'Qdame', 'Ehud']
-export const months: string[] = [
+export const geezDaysNames: string[] = ['Seno', 'Maks', 'Erob', 'Hamus', 'Arb', 'Qdame', 'Ehud']
+export const geezMonthsNames: string[] = [
   'Meskerem',
   'Tqmt',
   'Hdar',

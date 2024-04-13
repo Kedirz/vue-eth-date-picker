@@ -1,37 +1,42 @@
 <template>
   <div class="header-wrapper">
     <button>
-      <SvgButton type="backward" />
+      <i class="icon-chevron-left"></i>
     </button>
     <div class="month-year">
       <div class="month-list">{{ selectedDate.getMonth() }}</div>
       <div class="month-"></div>
     </div>
     <button>
-      <SvgButton type="forward" />
+      <i class="icon-chevron-right"></i>
     </button>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import SvgButton from '../components/shared-assets/SvgButtons.vue'
+import { ge } from 'ethiopic-calendar'
 
 export default defineComponent({
   name: 'HeaderComp',
-  components: {
-    SvgButton
-  },
   data() {
     return {
       selectedDate: new Date(new Date().setHours(0, 0, 0, 0))
     }
   },
-  created() {}
+  created() {
+    this.selectedDate = new Date()
+  },
+  computed: {
+    selectedDateGeez() {
+      console.log(ge(this.selectedDate))
+      return ge(this.selectedDate)
+    }
+  }
 })
 </script>
 <style scoped>
 .header-wrapper {
-  flex-direction: column;
-  flex: 1;
+  flex-direction: row;
+  display: flex;
 }
 </style>
