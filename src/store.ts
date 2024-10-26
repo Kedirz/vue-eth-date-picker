@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { gregToEthiopian } from './components/utils/data'
+import { gregToEthiopian } from './components/utils/date'
 
 const { year, month, day } = gregToEthiopian()
 
