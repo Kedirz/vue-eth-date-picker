@@ -1,4 +1,4 @@
-import { nextTick, reactive, watch } from 'vue'
+import { reactive, watch } from 'vue'
 import { getNumberOfDaysInEthiopianMonth, gregToEthiopian } from './components/utils/date'
 
 const { year, month, day } = gregToEthiopian()
