@@ -1,9 +1,8 @@
 <template>
   <select v-model="selectedYear">
-    <option v-for="n in 100" :key="n" :value="selectedYear + (n - 100)">
-      {{ selectedYear + (n - 100) }}
+    <option v-for="n in 200" :key="n">
+      {{ 1900 + n }}
     </option>
-    <option v-for="n in 100" :key="n" :value="selectedYear + n">{{ selectedYear + n }}</option>
   </select>
 </template>
 <script lang="ts" setup>
