@@ -1,19 +1,10 @@
 <template>
-  <MonthSelector />
-  <YearsSelector />
-  <DaysSelector />
-  <button
-    class="ec-enter"
-    @click.prevent="
-      emit('change:selectedDate', {
-        year: store.selectedYear,
-        month: store.selectedMonth,
-        date: store.selectedDate
-      })
-    "
-  >
-    Enter
-  </button>
+  <form @submit.prevent="onSubmit">
+    <MonthSelector />
+    <YearsSelector />
+    <DaysSelector />
+    <button class="ec-enter" type="submit">Enter</button>
+  </form>
 </template>
 <script lang="ts" setup>
 import { store } from '@/store'
@@ -22,4 +13,12 @@ import MonthSelector from './MonthSelector.vue'
 import YearsSelector from './YearsSelector.vue'
 
 const emit = defineEmits(['change:selectedDate'])
+const onSubmit = () => {
+  console.log('\n\nHELLO', store)
+  emit('change:selectedDate', {
+    year: store.selectedYear,
+    month: store.selectedMonth,
+    date: store.selectedDate
+  })
+}
 </script>
