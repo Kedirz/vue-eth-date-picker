@@ -14,7 +14,6 @@ import YearsSelector from './YearsSelector.vue'
 
 const emit = defineEmits(['change:selectedDate'])
 const onSubmit = () => {
-  console.log('\n\nHELLO', store)
   emit('change:selectedDate', {
     year: store.selectedYear,
     month: store.selectedMonth,
