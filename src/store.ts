@@ -1,9 +1,13 @@
-import { reactive } from 'vue'
-import { gregToEthiopian } from './components/utils/date'
+import { reactive, watch } from 'vue'
+import { getNumberOfDaysInEthiopianMonth, gregToEthiopian } from './components/utils/date'
 
 const { year, month, day } = gregToEthiopian()
 
-export const store = reactive({
+export const store = reactive<{
+  selectedMonth: number
+  selectedYear: number
+  selectedDate: number
+}>({
   selectedMonth: month, // 1 - 13
   selectedDate: day,
   selectedYear: year
@@ -23,3 +27,15 @@ export const updateStore = (action: Actions, payload: number) => {
       break
   }
 }
+
+watch(store, () => {
+  if (store.selectedMonth === 13) {
+    const numOfDaysForThisPagume = getNumberOfDaysInEthiopianMonth({
+      year: store.selectedYear,
+      month: 13
+    })
+    if (numOfDaysForThisPagume < store.selectedDate) {
+      store.selectedDate = 1
+    }
+  }
+})
