@@ -1,4 +1,4 @@
-import * as Ec from 'ethiopic-calendar'
+import { ethiopicToGregorian as ethToGreg, gregorianToEthiopic, isGregorianLeap } from '../../utils/ethiopic-calendar.js'
 
 /**
  * returns number of days for a given ethiopian month, year
@@ -16,7 +16,7 @@ type EcDate = {
  */
 export function getNumberOfDaysInEthiopianMonth({ year, month }: { month: number; year: number }) {
   if (month < 13) return 30
-  const ethiopicToGregorian: EcDate = Ec.eg(year, month, 5)
+  const ethiopicToGregorian: EcDate = ethToGreg(year, month, 5)
   const gregDate = new Date(
     ethiopicToGregorian.year,
     ethiopicToGregorian.month - 1,
@@ -24,7 +24,7 @@ export function getNumberOfDaysInEthiopianMonth({ year, month }: { month: number
   )
   const nextGregDate = addDaysToDate(gregDate, 1)
   const { year: gregYear, month: gregMonth, day: gregDateNxt } = formatter(nextGregDate)
-  if (Ec.ge(gregYear, gregMonth, gregDateNxt).day === 6) {
+  if (gregorianToEthiopic(gregYear, gregMonth, gregDateNxt).day === 6) {
     return 6
   } else {
     return 5
@@ -32,14 +32,14 @@ export function getNumberOfDaysInEthiopianMonth({ year, month }: { month: number
 }
 
 export function isGregLeapYear(year: number) {
-  return Ec.isGregorianLeap(year)
+  return isGregorianLeap(year)
 }
 
 export function gregToEthiopian(date: Date = new Date(), zeroHours: boolean = true) {
   if (zeroHours) {
     date = new Date(date.setHours(0, 0, 0, 0))
   }
-  return Ec.ge(date.getFullYear(), date.getMonth() + 1, date.getDate())
+  return gregorianToEthiopic(date.getFullYear(), date.getMonth() + 1, date.getDate())
 }
 
 /**
