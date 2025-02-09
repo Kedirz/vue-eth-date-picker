@@ -1,7 +1,7 @@
 # Ethiopian date picker for vue 3 apps
-<pre>
-<code id="code-block">npm install vue-eth-date-picker</code>
-</pre>
+```
+npm install vue-eth-date-picker
+```
 
 ### Example usage
 ```
