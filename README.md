@@ -1,8 +1,10 @@
-# vue-eth-date-picker
+## vue-eth-date-picker
 
 <pre>
 <code id="code-block">npm install vue-eth-date-picker</code>
 </pre>
+
+# Example usage
 ```
 <script setup>
 import VueEthDatePicker from 'vue-eth-date-picker'
