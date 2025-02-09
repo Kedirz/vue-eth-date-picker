@@ -1,9 +1,9 @@
-### 2. **Using JavaScript (For Custom Websites)**
+# Ethiopian date picker for vue 3 apps
 <pre>
 <code id="code-block">npm install vue-eth-date-picker</code>
 </pre>
 
-# Example usage
+### Example usage
 ```
 <script setup>
 import VueEthDatePicker from 'vue-eth-date-picker'
