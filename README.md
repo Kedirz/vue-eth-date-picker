@@ -1,5 +1,4 @@
-### 2. ** vue-eth-date-picker **
-
+### 2. **Using JavaScript (For Custom Websites)**
 <pre>
 <code id="code-block">npm install vue-eth-date-picker</code>
 </pre>
