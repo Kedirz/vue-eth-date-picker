@@ -35,7 +35,7 @@ export function isGregLeapYear(year: number) {
   return isGregorianLeap(year)
 }
 
-export function gregToEthiopian(date: Date = new Date(), zeroHours: boolean = true) {
+export function gregToEthiopian(date: Date = new Date(), zeroHours: boolean = true): EcDate {
   if (zeroHours) {
     date = new Date(date.setHours(0, 0, 0, 0))
   }
@@ -71,4 +71,13 @@ function formatter(date: Date = new Date()): EcDate {
     year: date.getFullYear(),
     day: date.getDate()
   }
+}
+
+export function getGregFromEthiopianDate({ year, month, day }: EcDate) {
+  const ethiopicToGregorian: EcDate = ethToGreg(year, month, day)
+  return new Date(
+    ethiopicToGregorian.year,
+    ethiopicToGregorian.month - 1,
+    ethiopicToGregorian.day
+  )
 }
